@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="columns is-mobile has-text-centered">
+    <div class="column is-half is-offset-one-quarter">
+
+
+      <div class="card">
+        <div class="card-content">
+
+  <form method="post" action="" enctype="multipart/form-data" role="form" >
+    <!-- 파일 업로드를 하기 위해서는 form에 enctype="multipart/form-data"을 추가해줘야 한다. novalidates는 form제출 시에는 유효성 검사를 하지 않게 해준다. -->
+  {% csrf_token %}
+  <h3 class="title is-1" >New Post</h3>
+
+ 
+  <div class="field">
+    <p class="control has-icons-left">
+      <label class="label is-medium">Chose your picture</label>
+      {{form.content}}
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+    </p>
+  </div>
+    
+  <div class="field">
+    <p class="control has-icons-left">
+      <label class="label is-medium">Caption</label>
+      {{form.caption}}
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+    </p>
+  </div>
+
+
+    
+  <div class="field">
+    <p class="control has-icons-left">
+      <label class="label is-medium">Tags (add tags, separeted by commas)</label>
+      {{form.tags}}
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+    </p>
+  </div>
+  
+    <div class="row">
+      <div class="col s12">
+        <span style="color: red; font-weight: bold;">{{ form.errors }}</span>
+      </div>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button type="submit" name="action" class="button is-success">
+          Create
+        </button>
+      </p>
+    </div>
+
+  </div>
+{% endblock %}
